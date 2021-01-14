@@ -180,7 +180,7 @@ rlim_set:
 	if (n_files == -1)
 		errx(1, "Too many files listed; the hard limit for your login"
 		    " class is %d. Please consult"
-		    (int)rl.rlim_cur);
+		    " joe mama", (int)rl.rlim_cur);
 	for (i=0; i<n_files; i++)
 		watch_file(kq, files[i]);
 
@@ -210,7 +210,6 @@ rlim_set:
 
 void
 usage() {
-	fprintf(stderr, "release: %s\n", RELEASE);
 	fprintf(stderr, "usage: chocolate [-acdnprsz] utility [argument [/_] ...] < filenames\n");
 	exit(1);
 }
@@ -497,7 +496,9 @@ watch_file(int kq, WatchFile *file) {
 	    file);
 	if (xkevent(kq, &evSet, 1, NULL, 0, NULL) == -1) {
 		if (errno == ENOSPC)
-			errx(1, "unable to allocate memory for kernel queue.");
+			errx(1, "Unable to allocate memory for kernel queue."
+			    " Please consult"
+			    " joe mama");
 		else
 			err(1, "failed to register VNODE event");
 	}
@@ -692,4 +693,3 @@ main:
 
 	goto main;
 }
-
